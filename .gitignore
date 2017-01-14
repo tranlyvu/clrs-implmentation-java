@@ -26,9 +26,8 @@ gen
 .gradle/
 .idea/
 build.gradle
-chapter11-Hash Tables/
 gradle/
 gradlew
 gradlew.bat
 settings.gradle
-src/
+
