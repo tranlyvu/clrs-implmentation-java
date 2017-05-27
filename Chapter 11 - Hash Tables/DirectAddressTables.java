@@ -1,7 +1,4 @@
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  *The DirectAddressTables program implements direct-address table
  *from chapter 11, page 254 of CLRS
@@ -11,8 +8,6 @@ import lombok.Setter;
  * @since   2017-01-14
  */
 
-@Getter
-@Setter
 public class DirectAddressTables {
 
   Object[] table;
