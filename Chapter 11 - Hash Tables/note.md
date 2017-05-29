@@ -24,6 +24,7 @@
 			1. T(h(x.key) = x;
 		c Deleting (T,x) =>O(1)
 			1. T(h(x.key)) = null
+	Open addressing (do do)
 
 ## Hash function
 	Division method
