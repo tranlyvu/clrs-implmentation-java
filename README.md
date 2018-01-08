@@ -1,6 +1,6 @@
 # **Autonomous Vehicle Projects**
 
-<img src="img/self-driving-car.jpg" width="480" alt="Combined Image" />
+<img src="img/network.png" width="480" alt="Combined Image" />
 
 ---
 Overview
@@ -11,8 +11,7 @@ The repo contains networking emulation projects.
 List of projects
 ---
 
-* [Software Defined Network]()
-
+* [Software Defined Network](https://github.com/tranlyvu/networking-projects/tree/master/Software%20Defined%20Network): A collection of software-defined network emulation projects from the course [Cloud Networking](https://www.coursera.org/learn/cloud-networking) as part of [Cloud Computing Specialization](https://www.coursera.org/specializations/cloud-computing)
 
 ---
 Contribution
