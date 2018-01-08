@@ -31,4 +31,4 @@ Feel free to contact me to discuss any issues, questions, or comments.
 ---
 License
 ---
-See the [LICENSE](https://github.com/tranlyvu/autonomous-vehicle-projects/blob/master/LICENSE) file for license rights and limitations (Apache License 2.0).
+See the [LICENSE](https://github.com/tranlyvu/networking-projects/blob/master/LICENSE) file for license rights and limitations (Apache License 2.0).
