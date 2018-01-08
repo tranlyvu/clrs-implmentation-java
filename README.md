@@ -20,7 +20,7 @@ Contribution
 Contributions are welcome! For bug reports or requests please submit an [issue](https://github.com/tranlyvu/networking-projects/issues).
 
 ---
-Contact-info
+Contact
 ---
 
 Feel free to contact me to discuss any issues, questions, or comments.
