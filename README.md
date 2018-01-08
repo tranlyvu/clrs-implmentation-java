@@ -1,4 +1,4 @@
-# **Autonomous Vehicle Projects**
+# **Networking Projects**
 
 <img src="img/network.png" width="480" alt="Combined Image" />
 
