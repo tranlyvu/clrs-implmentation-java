@@ -148,7 +148,9 @@ class BandwidthMonitor(app_manager.RyuApp):
             #print(self.topo.ports[name].values())
             print(self.topo.edgeSwitches)
             if name in self.topo.edgeSwitches:
-                if stat.port_no in self.topo.ports[name].values():
+                # device is witch or host connected to stat.port_no
+                device = self.topo.ports[name][stat.port_no]
+                if device in self.topo.hosts:
                     transmitted_bytes = stat.tx_packets
                     received_bytes = stat.rx_packets
                     hostname = self.topo.ports[name][stat.port_no]
