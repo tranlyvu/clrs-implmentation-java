@@ -143,7 +143,6 @@ class BandwidthMonitor(app_manager.RyuApp):
 
         # [ ADD YOUR CODE HERE ]
         for stat in body:
-            print(self.topo.ports[name].keys())
             # check if switch reporting the statistic is an edge switch
             if name in self.topo.edgeSwitches.keys() and stat.port_no in self.topo.ports[name].keys():
                 device = self.topo.ports[name][stat.port_no]
