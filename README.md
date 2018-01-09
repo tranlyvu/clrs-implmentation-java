@@ -1,17 +1,12 @@
-# **Networking Projects**
+# **Emulated Softwre-Defined Network Application**
 
 <img src="img/network.png" width="480" alt="Combined Image" />
 
 ---
 Overview
 ---
-The repo contains networking emulation projects.
 
----
-List of projects
----
-
-* [Software Defined Network](https://github.com/tranlyvu/networking-projects/tree/master/Software%20Defined%20Network): A collection of software-defined network emulation projects from the course [Cloud Networking](https://www.coursera.org/learn/cloud-networking) - a part of [University of Illinois at Urbana-Champaign's Cloud Computing Specialization](https://www.coursera.org/specializations/cloud-computing).
+The repo contains Emulated Softwre-Defined Network Application which is used for programming projects in the course [Cloud Networking](https://www.coursera.org/learn/cloud-networking) - a part of [University of Illinois at Urbana-Champaign's Cloud Computing Specialization](https://www.coursera.org/specializations/cloud-computing).
 
 ---
 Contribution

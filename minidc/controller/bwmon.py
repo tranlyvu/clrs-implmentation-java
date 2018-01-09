@@ -125,7 +125,7 @@ class BandwidthMonitor(app_manager.RyuApp):
         datapath = ev.msg.datapath
         dpid = datapath.id
 
-        # name of switch reporting data
+        # name of switch reporting data, name will be something like s101 or s102
         name = self.topo.dpidToName(dpid)
 
         totalDropped = 0
@@ -142,6 +142,7 @@ class BandwidthMonitor(app_manager.RyuApp):
         #  self.topo.ports[switch name][port number])
 
         # [ ADD YOUR CODE HERE ]
+        for switch 
 
         # periodically print tenant bandwidth usage
         self.statsReplied += 1
