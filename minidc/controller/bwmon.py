@@ -149,7 +149,7 @@ class BandwidthMonitor(app_manager.RyuApp):
                 if device in self.topo.hosts.keys():
                     transmitted_bytes = stat.tx_bytes
                     received_bytes = stat.rx_bytes
-                    self.bwstats.addHostBwStatdevice , transmitted_bytes, received_bytes)
+                    self.bwstats.addHostBwStat(device , transmitted_bytes, received_bytes)
                     print(self.topo.edgeSwitches.keys())
                     print(self.topo.hosts.keys())
 
