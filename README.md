@@ -1,4 +1,4 @@
-# **Emulated Softwre-Defined Network Application**
+# **Emulated Software-Defined Network Application**
 
 <img src="img/network.png" width="480" alt="Combined Image" />
 
@@ -12,7 +12,7 @@ The repo contains Emulated Softwre-Defined Network Application which is used for
 Contribution
 ---
 
-Contributions are welcome! For bug reports or requests please submit an [issue](https://github.com/tranlyvu/networking-projects/issues).
+Contributions are welcome! For bug reports or requests please submit an [issue](https://github.com/tranlyvu/emulated-sdn-application/issues).
 
 ---
 Contact
@@ -27,4 +27,4 @@ Feel free to contact me to discuss any issues, questions, or comments.
 License
 ---
 
-See the [LICENSE](https://github.com/tranlyvu/networking-projects/blob/master/LICENSE) file for license rights and limitations (Apache License 2.0).
+See the [LICENSE](https://github.com/tranlyvu/emulated-sdn-application/blob/master/LICENSE) file for license rights and limitations (Apache License 2.0).

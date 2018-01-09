@@ -142,7 +142,8 @@ class BandwidthMonitor(app_manager.RyuApp):
         #  self.topo.ports[switch name][port number])
 
         # [ ADD YOUR CODE HERE ]
-        for switch 
+        #if name != self.topo
+
 
         # periodically print tenant bandwidth usage
         self.statsReplied += 1
