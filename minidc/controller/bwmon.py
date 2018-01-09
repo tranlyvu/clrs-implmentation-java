@@ -149,7 +149,7 @@ class BandwidthMonitor(app_manager.RyuApp):
                 if host in self.topo.hosts.keys():
                     transmitted_bytes = stat.tx_packets
                     received_bytes = stat.rx_packets
-                    self.bwstats.addHostBwStat(device, transmitted_bytes, received_bytes)
+                    self.bwstats.addHostBwStat(host, transmitted_bytes, received_bytes)
 
 
         # periodically print tenant bandwidth usage
