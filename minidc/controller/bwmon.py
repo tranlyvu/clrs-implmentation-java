@@ -143,6 +143,9 @@ class BandwidthMonitor(app_manager.RyuApp):
 
         # [ ADD YOUR CODE HERE ]
         for stat in body:
+            print(stat)
+            print(self.topo.ports[name].keys())
+            print(self.topo.ports[name].values())
             if stat.port_no in self.topo.ports[name].values():
                     transmitted_bytes = stat.tx_bytes
                     received_bytes = stat.rx_bytes
