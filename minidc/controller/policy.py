@@ -171,8 +171,9 @@ class StaticPolicy(object):
         #   (Hint: you can look up the port of a neighboring host using
         #           topo.ports[edge switch name][host name]
         #   (Hint: to find a the VLAN, use topo.getVlanCore(vlanId))
+        for edge in top.edgeSwitches.values():
+            
 
-        # [ADD YOUR CODE HERE]
 
         return flood.add_arpflood(routingTable, topo)
 
