@@ -180,7 +180,7 @@ class StaticPolicy(object):
                     output = topo.ports[edge.name][host.name]
                 else:
                     print(host.vlans[0])
-                    print(host.vlans[1])
+                
                     vlanId = host.vlans[0]
                     coreSwitch = topo.getVlanCore(vlanId)
                     output = topo.ports[edge.name][coreSwitch]
