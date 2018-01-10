@@ -171,6 +171,7 @@ class StaticPolicy(object):
         #   (Hint: you can look up the port of a neighboring host using
         #           topo.ports[edge switch name][host name]
         #   (Hint: to find a the VLAN, use topo.getVlanCore(vlanId))
+
         # create rules for packets from edge -> core (upward)
         for edge in topo.edgeSwitches.values():
             routingTable[edge.dpid] = []
@@ -182,6 +183,7 @@ class StaticPolicy(object):
                     vlanId = host.vlans[0]
                     coreSwitch = topo.getVlanCore(vlanId)
                     outPort= topo.ports[edge.name][coreSwitch]
+                    print (edge.name, h.name, topo.getVlanCore(h.vlans[0]),outport)
 
                 routingTable[edge.dpid].append({
                     'eth_dst' : h.eth,
