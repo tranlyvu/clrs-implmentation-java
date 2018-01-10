@@ -185,10 +185,11 @@ class StaticPolicy(object):
                 if host.name in edge.neighbors:
                     outPort = topo.ports[edge.name][host.name]
                 else:
-                    vlanId = host.vlans[0]
-                    coreSwitch = topo.getVlanCore(vlanId)       
-                    outPort = topo.ports[edge.name][coreSwitch]
-                    print (edge.name, vlanId, coreSwitch, outPort)
+                    outPort = topo.ports[edge.name][topo.getVlanCore(host.vlans[0])]
+                    #vlanId = host.vlans[0]
+                    #coreSwitch = topo.getVlanCore(vlanId)       
+                    #outPort = topo.ports[edge.name][coreSwitch]
+                    #print (edge.name, vlanId, coreSwitch, outPort)
 
                 routingTable[edge.dpid].append({
                     'eth_dst' : h.eth,
