@@ -173,8 +173,9 @@ class StaticPolicy(object):
         #   (Hint: to find a the VLAN, use topo.getVlanCore(vlanId))
         # create rules for packets from edge -> core (upward)
         core_vlan0 = topo.coreSwitches.keys()[0]
+        print(core_vlan0)
         core_vlan1 = topo.coreSwitches.keys()[1]
-
+        print(core_vlan1)
         for edge in topo.edgeSwitches.values():
             routingTable[edge.dpid] = []
             for h in topo.hosts.values():
