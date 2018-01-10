@@ -179,8 +179,6 @@ class StaticPolicy(object):
                 if host.name in edge.neighbors:
                     output = topo.ports[edge.name][host.name]
                 else:
-                    print(host.vlans[0])
-                
                     vlanId = host.vlans[0]
                     coreSwitch = topo.getVlanCore(vlanId)
                     output = topo.ports[edge.name][coreSwitch]
