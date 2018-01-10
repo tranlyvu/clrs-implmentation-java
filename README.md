@@ -12,7 +12,9 @@ The repo contains Emulated Softwre-Defined Network Application which is used for
 Assignment 1
 ---
 
-Now that the VM is set up, you will learn how to use the environment that emulates the miniature datacenter. Our system uses the network emulator mininet to run a software-defined network (SDN). To control the SDN, we'll use the controller Ryu. This software is already installed and configured in the VM.
+In this assignment, we will run an emulated network and observe the impact of routing policies on application performance. 
+
+Our system uses the network emulator mininet to run a software-defined network (SDN). To control the SDN, we'll use the controller Ryu. 
 
 The datacenter will use a topology consisting of core switches, edge switches, and hosts, as shown below. Switches s104 and s105 are core switches, which connect to edge switches s101, s102, and s103. Each edge switch connects to all core switches, as well as two hosts (e.g., two of h1–h6). The datacenter will have two tenants – one running iperf to simulate bulk transfers and another streaming video. The video server will adapt the video quality to the available bandwidth between the video server and client.
 
@@ -26,7 +28,7 @@ The naive policy you will see in action will route all traffic from the edge swi
 
 <img src="img/assignment1.png" width="480" alt="Combined Image" />
 
-To start the emulator, open two terminals in the VM. There is a shortcut provided on the desktop.
+To start the emulator:
 
 1. In terminal 1, cd to ~/cloudnetmooc and run sudo ./mdc --vid
 
@@ -47,7 +49,7 @@ In terminal 2, Ctrl-c to stop Ryu.
 Assignment 2
 ---
 
-Now that you have seen the impact of poor routing policies on application performance, your next step as network operator will be to quantify the problem by implementing a bandwidth monitor. To do this, you will extend our Ryu controller application to collect bandwidth information from the switches. Ryu and SDN switches support port statistics requests. This allows the controller application to query switches about the number of bytes, packets, and errors for each port (physical or virtual) on the switch.
+Now that we have seen the impact of poor routing policies on application performance, our next step as network operator will be to quantify the problem by implementing a bandwidth monitor. To do this, we will extend our Ryu controller application to collect bandwidth information from the switches. Ryu and SDN switches support port statistics requests. This allows the controller application to query switches about the number of bytes, packets, and errors for each port (physical or virtual) on the switch.
 
 We will be using the same topology and tenant placement as the previous assignment, shown below.
 
@@ -58,6 +60,31 @@ In this assignment, you will add code to the file ~/cloudnetmooc/minidc/controll
 All the code for issuing port statistics requests is provided for you. You will add a small amount of code to handle the reply. In particular, you will extend the function statsReplyHandler() in the file bwmon.py. This function is invoked each time the controller receives a port statistics reply from a switch. The reply contains a list of statistics for each port. Your code should determine which host is associated with port in the reply and update the bandwidth usage for that host. Useful API functions are detailed in the source file and comments. Your solution should not require any code outside the function statsReplyHandler(). Hint: you only want to examine entries in the statistics list for physical ports, not virtual ports. You can filter out virtual ports by checking if the port has an entry in the list self.topo.ports[switchName].keys() for a switch switchName.
 
 If coded correctly, you should see bandwidth statistics reported to the dashboard at http://127.0.0.1. (Note: this page is only accessible when the script mdc is running.) You will also see bandwidth usage statistics (grouped by tenant) printed to the terminal executing Ryu.
+
+### Instructions
+
+To validate your code, open two terminals in the VM and perform the following steps:
+
+1. In terminal 1, cd to ~/cloudnetmooc and run: sudo ./mdc --vid
+
+2. In terminal 2, cd to ~/cloudnetmooc/minidc/controller
+
+Start Ryu: ryu-manager controller.py.
+The default (naive) routing policy will be loaded automatically.
+3. Now that Ryu has started, press <enter> in terminal 1.
+
+A Chrome window will pop up, press play to start the video.
+Observe the video quality is poor and plays only in low quality. The video may even pause to buffer.
+4. Open a new, different instance of Chrome from the menu bar or Desktop.
+
+Load the dashboard by navigating to http://127.0.0.1.
+Observe that the graphs now report data, including bandwidth usage for each host and tenant. Note: opening a new window from the video player using Ctrl-N will open a sandboxed instance that does not have access to the dashboard.
+5. End the experiment:
+
+In terminal 1, type exit<enter> (do not Ctrl-c to exit, this will interrupt the teardown process. If you accidentally Ctrl-c and interrupt the process, run sudo mn -c).
+In terminal 2, Ctrl-c to stop Ryu.
+
+Expected Result: If your code is working properly, you should see bandwidth data for each host and tenant in the dashboard at http://127.0.0.1.
 
 
 ---
@@ -74,6 +101,28 @@ We will be using the same topology as the previous assignments. Notice in the to
 
 In this assignment, you will add code to the file ~/cloudnetmooc/minidc/controller/policy.py. Specifically, you will extend the function build() in the class StaticRouting. Your code should install a rule in each edge switch. If the destination host is a neighbor – that is, if the host is directly connected to the switch via a port – output the packet out that port. If not, send the packet "up" to the core switch that is associated with the destination host's VLAN. You may use the "upward" rules in DefaultPolicy.build() as a rough guide. Useful API functions are also detailed in the source file and comments.
 
+### Instructions
+
+To validate your code, open two terminals in the VM and perform the following steps:
+
+1. In terminal 1, cd to ~/cloudnetmooc and run: sudo ./mdc --vid
+
+2. In terminal 2, cd to ~/cloudnetmooc/minidc/controller.
+
+Start Ryu: ryu-manager controller.py.
+The default (naive) routing policy will be loaded automatically.
+3. Now that Ryu has started, press <enter> in terminal 1.
+
+A Chrome window will pop up, press play to start the video.
+Observe the video quality is poor and plays only in low quality. The video may even pause to buffer
+4. Open a new, different instance of Chrome from the menu bar or Desktop.
+
+Load the improved routing policy by selecting the radio button labeled "Static" and pressing the "Update Policy" button. Observe the video plays almost entirely in high quality.
+5. End the experiment:
+
+In terminal 1, type exit<enter> (do not Ctrl-c to exit, this will interrupt the teardown process. If you accidentally Ctrl-c and interrupt the process, run sudo mn -c).
+In terminal 2, Ctrl-c to stop Ryu.
+
 If coded correctly, you should see an improvement in the video quality compared to Assignment 1. The video may not play entirely in high quality, but you should notice an improvement from the policy in Assignment 1.
 
 ---
@@ -87,6 +136,33 @@ We will use a larger topology for this assignment, shown below, with 3 core swit
 <img src="img/assignment4.png" width="480" alt="Combined Image" />
 
 Rather than pre-assigning VLANs to particular core switches, your new routing policy will create a flow scheduling policy that balances flows across core switches, regardless of their VLAN/tenant association. You will implement this improved policy in the file ~/cloudmooc/minidc/controller/policy.py. Specifically, you will add code to the function minUtilization() in the class AdaptivePolicy. Your code should use the dictionary self.utilization to find the least utilized core switch. This dictionary stores switch names as keys and utilization (in bytes) as the value. Remember: since we are balancing the utilization among core switches, the dictionary self.utilization will only contain keys for core switches. Your code should not need to reference any other modules or objects aside from self.utilization.
+
+### Instructions
+We will explore this scenario using memcached, a caching system commonly used for caching objects in a web page. A client will issue requests to memcached servers and record the response time to load all the objects. The client will perform 20 page loads and record the median and 95th percentile from these 20 trials. The results will be reported at the bottom of the dashboard at http://127.0.0.1.
+
+To validate your code, perform the following steps:
+
+1. In terminal 1, cd to ~/cloudnetmooc and run: sudo ./mdc --adp. Note: use the parameter --adp for this assignment, not --vid.
+
+2. In terminal 2, cd to ~/cloudnetmooc/minidc/controller.
+
+Start Ryu: ryu-manager controller.py.
+The default (naive) routing policy will be loaded automatically.
+3. Now that Ryu has started, press <enter> in terminal 1
+
+4. Open a Chrome instance from the menu bar and navigate to http://127.0.0.1.
+
+Wait several seconds and observe the graph of memcached response times updates.
+Load the routing policy from Assignment 2 by selecting the radio button labeled Static and pressing the Update Policy button.
+Observe that the response time does not significantly decrease.
+Load the newest routing policy by selecting the radio button labeled Adaptive and pressing the Update Policy button.
+If coded correctly, your newest routing policy should significantly decrease the response time.
+5. End the experiment:
+
+In terminal 1, type exit<enter> (do not Ctrl-c to exit, this will interrupt the teardown process. If you accidentally Ctrl-c and interrupt the process, run sudo mn -c).
+In terminal 2, Ctrl-c to stop Ryu.
+
+Expected Result: If your code is working properly, you should see the memcached response time improve when the adaptive policy is loaded. In particular, you should see a noticeable improvement in the 95th percentile compared to the default and static policies
 
 ---
 Contribution
