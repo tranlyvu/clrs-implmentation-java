@@ -188,7 +188,6 @@ class StaticPolicy(object):
                     vlanId = host.vlans[0]
                     coreSwitch = topo.getVlanCore(vlanId)       
                     outPort = topo.ports[edge.name][coreSwitch]
-                    print (edge.name, vlanId, coreSwitch, outPort)
 
                 routingTable[edge.dpid].append({
                     'eth_dst' : host.eth,
