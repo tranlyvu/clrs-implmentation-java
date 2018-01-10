@@ -81,7 +81,7 @@ class AdaptivePolicy(object):
         least_utilized = self.utilization.keys()[0]
         return_switch = None
         for switch in self.utilization.keys():
-            if self.utilization[switch] < least_utilized   
+            if self.utilization[switch] < least_utilized:  
                 least_utilized = self.utilization[switch]
                 return_switch = switch
 
