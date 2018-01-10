@@ -177,15 +177,15 @@ class StaticPolicy(object):
             for host in topo.hosts.values():
                 # output the appropriate port if the destination is a neighboring host 
                 if host.name in edge.neighbors:
-                    output = topo.ports[edge.name][host.name]
+                    outPort = topo.ports[edge.name][host.name]
                 else:
                     vlanId = host.vlans[0]
                     coreSwitch = topo.getVlanCore(vlanId)
-                    output = topo.ports[edge.name][coreSwitch]
+                    outPort= topo.ports[edge.name][coreSwitch]
 
                 routingTable[edge.dpid].append({
                     'eth_dst' : h.eth,
-                    'output' : [output],
+                    'output' : [outPort],
                     'priority' : 2,
                     'type' : 'dst'
                 })
