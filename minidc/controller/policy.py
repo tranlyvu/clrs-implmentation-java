@@ -187,7 +187,7 @@ class StaticPolicy(object):
                     else:
                         output = topo.ports[edge.name][core_vlan0]
 
-                routingTable[edge.dpi].append({
+                routingTable[edge.dpid].append({
                     'eth_dst' : h.eth,
                     'output' : [output],
                     'priority' : 2,
