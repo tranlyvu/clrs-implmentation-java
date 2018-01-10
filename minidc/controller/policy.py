@@ -181,7 +181,7 @@ class StaticPolicy(object):
                 # output the appropriate port if the destination is a neighboring host 
                 if h.name in edge.neighbors:
                     output = topo.ports[edge.name][h.name]
-                else
+                else:
                     if 's101' is edge.name:
                         output = topo.ports[edge.name][core_vlan1]
                     else:
