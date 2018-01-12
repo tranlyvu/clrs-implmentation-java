@@ -1,12 +1,8 @@
 # **Emulated Software-Defined Network Application**
 
+An Emulated Softwre-Defined Network Application which is used for programming projects in the course [Cloud Networking](https://www.coursera.org/learn/cloud-networking) - a part of [University of Illinois at Urbana-Champaign's Cloud Computing Specialization](https://www.coursera.org/specializations/cloud-computing).
+
 <img src="img/network.png" width="480" alt="Combined Image" />
-
----
-Overview
----
-
-The repo contains Emulated Softwre-Defined Network Application which is used for programming projects in the course [Cloud Networking](https://www.coursera.org/learn/cloud-networking) - a part of [University of Illinois at Urbana-Champaign's Cloud Computing Specialization](https://www.coursera.org/specializations/cloud-computing).
 
 ---
 Assignment 1
@@ -40,6 +36,7 @@ The default (naive) routing policy will be loaded automatically.
 
 A Chrome window will pop up. Press play to start the video.
 Observe the video quality is poor and plays only in low quality. The video may even pause to buffer.
+
 4. End the experiment:
 
 In terminal 1, type exit<enter> (do not Ctrl-c to exit; this will interrupt the teardown process). If you accidentally Ctrl-c and interrupt the process, run sudo mn -c.
@@ -165,10 +162,28 @@ In terminal 2, Ctrl-c to stop Ryu.
 Expected Result: If your code is working properly, you should see the memcached response time improve when the adaptive policy is loaded. In particular, you should see a noticeable improvement in the 95th percentile compared to the default and static policies
 
 ---
+Release History
+---
+
+* 1.0.0
+    * The first official release
+
+
+---
 Contribution
 ---
 
-Contributions are welcome! For bug reports or requests please submit an [issue](https://github.com/tranlyvu/emulated-sdn-application/issues).
+Contributions are welcome! For bug reports or requests please submit an [issue](https://github.com/tranlyvu/emulated-sdn-application/releases).
+
+For new feature contribution, please follow the following instruction:
+
+```
+1. Fork it (https://github.com/tranlyvu/wiki-link.git)
+2. Create your feature branch (`git checkout -b feature/new`)
+3. Commit your changes (`git commit -am 'Add some new feature'`)
+4. Push to the branch (`git push origin feature/new`)
+5. Create a new Pull Request
+```
 
 ---
 Contact
