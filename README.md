@@ -22,7 +22,7 @@ Next, you will start the emulated environment and see the impact of a poor routi
 
 The naive policy you will see in action will route all traffic from the edge switches to a single core switch, as show by the mixed red and blue lines. Notice that s104 can become a bottleneck in the network, and s105 is completely unused. As a result, the traffic of one tenant can easily impact another tenant's perceived network performance.
 
-<img src="img/part1.png" width="480" alt="Combined Image" />
+<img src="img/assignment1.png" width="480" alt="Combined Image" />
 
 To start the emulator:
 
@@ -50,7 +50,7 @@ Now that we have seen the impact of poor routing policies on application perform
 
 We will be using the same topology and tenant placement as the previous part, shown below.
 
-<img src="img/part2.png" width="480" alt="Combined Image" />
+<img src="img/assignment2.png" width="480" alt="Combined Image" />
 
 In this part, you will add code to the file ~/cloudnetmooc/minidc/controller/bwmon.py. This file contains the code to issue a port statistics request to each switch in the network. Each switch responds asynchronously with a packet containing the statistics for each of its ports. Remember, each port is connected to a device on the network, such as a host or another network.
 
@@ -94,7 +94,7 @@ In parts 1 and 2, the routing policy sent all traffic from edge switches through
 
 We will be using the same topology as the previous parts. Notice in the topology diagram below that each core switch handles traffic for one tenant.
 
-<img src="img/part3.png" width="480" alt="Combined Image" />
+<img src="img/assignment3.png" width="480" alt="Combined Image" />
 
 In this part, you will add code to the file ~/cloudnetmooc/minidc/controller/policy.py. Specifically, you will extend the function build() in the class StaticRouting. Your code should install a rule in each edge switch. If the destination host is a neighbor – that is, if the host is directly connected to the switch via a port – output the packet out that port. If not, send the packet "up" to the core switch that is associated with the destination host's VLAN. You may use the "upward" rules in DefaultPolicy.build() as a rough guide. Useful API functions are also detailed in the source file and comments.
 
@@ -130,7 +130,7 @@ While the routing policy in the previous part utilizes all core switches, static
 
 We will use a larger topology for this part, shown below, with 3 core switches, 4 edge switches, and 5 hosts per edge switch. There will be 3 different types of tenants, each with 4 hosts: Iperf, Inactive, and Memcached. The 2 Iperf tenants consist of hosts running iperf to simulate bulk transfers. Hosts that are members of the 2 Inactive tenants will not transfer any data. The Memcached tenant will consist of one client retrieving memcached objects, in parallel, from 3 different memcached servers. This will simulate a client loading a web page of multiple objects.
 
-<img src="img/part4.png" width="480" alt="Combined Image" />
+<img src="img/assignment4.png" width="480" alt="Combined Image" />
 
 Rather than pre-assigning VLANs to particular core switches, your new routing policy will create a flow scheduling policy that balances flows across core switches, regardless of their VLAN/tenant association. You will implement this improved policy in the file ~/cloudmooc/minidc/controller/policy.py. Specifically, you will add code to the function minUtilization() in the class AdaptivePolicy. Your code should use the dictionary self.utilization to find the least utilized core switch. This dictionary stores switch names as keys and utilization (in bytes) as the value. Remember: since we are balancing the utilization among core switches, the dictionary self.utilization will only contain keys for core switches. Your code should not need to reference any other modules or objects aside from self.utilization.
 
