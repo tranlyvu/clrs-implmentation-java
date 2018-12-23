@@ -6,11 +6,18 @@ The project was forked from University of Illinois at Urbana-Champaign' [Cloud C
 
 <img src="img/network.png" width="480" alt="Combined Image" />
 
-# Table of Contents
+---
+Table of Contents
+---
+
 1. [Setup instructions](#Setup-instructions)
-2. [Video Streaming](#example2)
-3. [Traffic Monitor](#third-example)
-4. [Tenants](#third-example)
+2. [Video Streaming](#Video-Streaming)
+3. [Traffic Monitor](#Traffic-Monitor)
+4. [Tenants](#Tenants)
+5. [Release History](#Release-History)
+6. [Contribution](#Contribution)
+7. [Contact](#Contact)
+8. [License](#License)
 
 ---
 Setup instructions
@@ -255,6 +262,7 @@ Load the routing policy from part 2 by selecting the radio button labeled Static
 Observe that the response time does not significantly decrease.
 Load the newest routing policy by selecting the radio button labeled Adaptive and pressing the Update Policy button.
 If coded correctly, your newest routing policy should significantly decrease the response time.
+
 5. End the experiment:
 
 In terminal 1, type exit<enter> (do not Ctrl-c to exit, this will interrupt the teardown process. If you accidentally Ctrl-c and interrupt the process, run sudo mn -c).
@@ -268,7 +276,6 @@ Release History
 
 * v1.0.0
     * First official release
-
 
 ---
 Contribution
