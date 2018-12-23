@@ -1,6 +1,8 @@
 # **Emulated Software-Defined Network Application**
 
-An Emulated Softwre-Defined Network Application which is used for programming projects in the course [Cloud Networking](https://www.coursera.org/learn/cloud-networking) - as part of [University of Illinois at Urbana-Champaign's Cloud Computing Specialization](https://www.coursera.org/specializations/cloud-computing).
+Monitored and improve routing policy on an emulated network and application using Software-Defined Network (SDN).
+
+The project was forked from University of Illinois at Urbana-Champaign' [Cloud Computing Specialization](https://www.coursera.org/specializations/cloud-computing) programming assignment.
 
 <img src="img/network.png" width="480" alt="Combined Image" />
 
@@ -177,13 +179,29 @@ Contributions are welcome! For bug reports or requests please submit an [issue](
 
 For new feature contribution, please follow the following instruction:
 
-```
-1. Fork the repo (`$git clone https://github.com/tranlyvu/emulated-sdn-application.git`)
-2. Create your feature branch (`$git checkout -b new/your-feature`)
-3. Commit your changes (`$git commit -am 'Add some new feature'`)
-4. Push to the branch (`$git push origin new/your-feature`)
-5. Create a new Pull Request at https://github.com/tranlyvu/emulated-sdn-application/pulls
-```
+1. Fork the repo https://github.com/tranlyvu/emulated-sdn-application.git to your own github
+
+2. Clone from your own repo
+
+`$ git clone https://github.com/<your name>/emulated-sdn-application.git`
+
+3. Make sure you are at dev branch 
+
+`$ git checkout dev && git pull`
+
+4. Create your feature/bug-fix branch
+
+`$ git checkout -b <feature/bug>/<branch-name>`
+
+5. Commit your changes 
+
+`$ git commit -am 'Add some new feature'`
+
+6. Push to the branch 
+
+`$ git push`
+
+7. Go to your own repo and create a new Pull Request against 'dev' branch
 
 ---
 Contact
@@ -191,7 +209,7 @@ Contact
 
 Feel free to contact me to discuss any issues, questions, or comments.
 *  Email: vutransingapore@gmail.com
-*  Twitter: [@vutransingapore](https://twitter.com/vutransingapore)
+*  Linkedln: [@vutransingapore](https://www.linkedin.com/in/tranlyvu/)
 *  GitHub: [Tran Ly Vu](https://github.com/tranlyvu)
 
 ---
