@@ -6,13 +6,111 @@ The project was forked from University of Illinois at Urbana-Champaign' [Cloud C
 
 <img src="img/network.png" width="480" alt="Combined Image" />
 
+# Table of Contents
+1. [Setup instructions](#Setup-instructions)
+2. [Video Streaming](#example2)
+3. [Traffic Monitor](#third-example)
+4. [Tenants](#third-example)
+
 ---
-Part 1
+Setup instructions
+---
+
+Software Requirements
+
+1. Download and install the following programs:
+
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+* [7-Zip](http://www.7-zip.org/download.html)
+
+2. Download the VM disk (~600 MB):
+
+* [moocvm.7z](https://d3c33hcgiwev3.cloudfront.net/_7ff019cc50f9be488179d2dfb78bda8e_moocvm.7z?Expires=1545696000&Signature=DOsyD92CBLQwh40jxBU58gJpa2tdGfBFBNsIFXyT7UJZxwQIoRUETRzT4q-PgLxABgyLUBWnV81TBC8cfTBUvY72F0AhyBBjxl7SRUIoTGVplvieIQmSYWDrmlvXqhmVFBEVD9n8btSq8Fk1kVIYomRbFoBjfWJoS69sqkDqSkY_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A)
+
+3. Extract moocvm.7z to obtain the file MoocVm-disk1.vmdk. (Note: the vmdk is approximately 2.8 GB.)
+
+VM Setup
+
+The details may vary minutely on different operating systems and corresponding versions of VirtualBox.
+
+1. Open VirtualBox Manager
+2. From the menu bar, select Machine --> New
+3. Create a VM with the name cloudnetmooc, type Linux and version Ubuntu (64bit), and click Next
+4. Set the memory size to at least 2048MB and click Next
+5. Select the bullet Use an existing virtual hard drive file
+6. Click the folder icon next to the drop down menu and navigate to the folder containing MoocVm-disk1.vmdk
+7. Select MoocVm-disk1.vmdk and press Open
+8. Click Next
+
+Recommended: Configure the VM with additional processors and video memory.
+
+1. In the VirtualBox Manager, select the newly created VM cloudnetmooc
+2. Click the Settings icon below the menu bar
+3. In the Settings menu, select System from the left side menu
+4. Click on the Processor tab and increase the count to at least 2
+5. Select Display from the left side menu
+6. Increase the Video Memory to at least 32MB
+
+Start the VM.
+
+1. In the VirtualBox Manager, select the newly created VM cloudnetmooc
+2. Click the Start icon below the menu bar
+3. When the VM starts, log in with the username mooc and password mooc (Note: the sudo password is also mooc)
+4. To start the desktop environment, type startx and press Enter
+
+To change the VM guest display size, you can configure the display to auto-adjust to the VM window size. From the VM window, select View --> Auto-resize Guest Display. Alternatively, you can set the resolution manually inside the VM by performing the follow steps.
+
+1. Click Applications Menu --> Settings --> Display
+2. Select the desired resolution from the Resolution drop down menu
+3. A confirmation window may appear, click Keep this Configuration
+4. Close the Display window
+
+Note: To keep the distributed image small, we have included only the lightweight graphical editor mousepad. You can install your preferred editor using the command sudo apt-get install [emacs, vim, nano]. Remember, the sudo password is also mooc.
+
+Common Problems
+
+When creating a new VM, there is no option for 64-bit Ubuntu in VirtualBox.
+
+* This may be caused by several issues: virtualization extensions are not enabled or Hyper-V may conflict with VirtualBox.
+* Enable Virtualization Extensions: Ensure you have enabled virtualization extensions (VT-x/AMD-V) in your system's BIOS. The exact instructions will depend on your motherboard, but generally the instructions follow:
+
+1. Reboot your machine and open the BIOS menu. Depending on your system, this typically is done by pressing the delete key, the F1 key, the F4 key, or the Alt key
+2. Open the Processor menu
+3. Enable Intel Virtualization Technology (Intel VT-X). AMD-V extensions will already be enabled. The extensions may be also labeled "Virtualization Extensions" or "Vanderpool" or various other names
+4. Select Save & Exit
+5. Reboot the machine
+
+* Disable Hyper-V: On Windows machines, Hyper-V can conflict with VirtualBox. Disable Hyper-V under Settings --> Control Panel --> Turn Windows Features On or Off.
+
+I've enabled virtualization extensions but the VM does not start
+* Ensure virtualization extensions are enabled in VirtualBox for your new VM. In VirtualBox, select the VM and click Settings. On the left side menu, click System, then select the Acceleration tab. Make sure the box labeled Enable VT-x/AMD-V is checked.
+
+My hardware doesn't support virtualization extensions
+* You can download a 32-bit version of the VM image here.
+
+There is no 7-zip client for my OS
+* OS X users can download one of several 7-zip clients:
+
+-[Rar extractor](https://itunes.apple.com/us/app/rar-extractor-free/id646295438?mt=12)
+
+-[Keka](http://www.kekaosx.com/)
+
+-[7zX](http://7zx.updatestar.com/)
+
+* Ubuntu users can install 7zip using sudo apt-get install p7zip-full and extract the image using 7za x moocvm.7z.
+
+After downloading VM disk, how I can I be sure it was not corrupted during transfer?
+* You can verify the integrity using md5sum. The checksum for the disks are:
+* moocvm.7z: 74edc5f994154256fdc5322b9ed4053a
+* moocvm32.7z: 6ddf313d51f212d598f14a2a37c918cd
+
+---
+Video Streaming
 ---
 
 In this part, we will run an emulated network and observe the impact of routing policies on application performance. 
 
-Our system uses the network emulator mininet to run a software-defined network (SDN). To control the SDN, we'll use the controller Ryu. 
+Our system uses the network emulator [mininet](http://mininet.org/) to run a [software-defined network (SDN)](https://en.wikipedia.org/wiki/Software-defined_networking). To control the SDN, we'll use the controller Ryu. 
 
 The datacenter will use a topology consisting of core switches, edge switches, and hosts, as shown below. Switches s104 and s105 are core switches, which connect to edge switches s101, s102, and s103. Each edge switch connects to all core switches, as well as two hosts (e.g., two of h1–h6). The datacenter will have two tenants – one running iperf to simulate bulk transfers and another streaming video. The video server will adapt the video quality to the available bandwidth between the video server and client.
 
@@ -32,20 +130,21 @@ To start the emulator:
 
 2. In terminal 2, cd to ~/cloudnetmooc/minidc/controller
 
-Start Ryu: ryu-manager controller.py
-The default (naive) routing policy will be loaded automatically.
+* Start Ryu: ryu-manager controller.py
+* The default (naive) routing policy will be loaded automatically.
+
 3. Now that Ryu has started, press <enter> in terminal 1.
 
-A Chrome window will pop up. Press play to start the video.
-Observe the video quality is poor and plays only in low quality. The video may even pause to buffer.
+* A Chrome window will pop up. Press play to start the video.
+* Observe the video quality is poor and plays only in low quality. The video may even pause to buffer.
 
 4. End the experiment:
 
-In terminal 1, type exit<enter> (do not Ctrl-c to exit; this will interrupt the teardown process). If you accidentally Ctrl-c and interrupt the process, run sudo mn -c.
-In terminal 2, Ctrl-c to stop Ryu.
+* In terminal 1, type exit<enter> (do not Ctrl-c to exit; this will interrupt the teardown process). If you accidentally Ctrl-c and interrupt the process, run sudo mn -c.
+* In terminal 2, Ctrl-c to stop Ryu.
 
 --- 
-Part 2
+Traffic Monitor
 ---
 
 Now that we have seen the impact of poor routing policies on application performance, our next step as network operator will be to quantify the problem by implementing a bandwidth monitor. To do this, we will extend our Ryu controller application to collect bandwidth information from the switches. Ryu and SDN switches support port statistics requests. This allows the controller application to query switches about the number of bytes, packets, and errors for each port (physical or virtual) on the switch.
@@ -87,7 +186,7 @@ Expected Result: If your code is working properly, you should see bandwidth data
 
 
 ---
-Part 3
+Current routing
 ---
 
 In the previous part we learned how much each host contributes to the amount of congestion in the network. Now, you will improve the routing policy to provide better isolation between the tenants.
@@ -125,7 +224,7 @@ In terminal 2, Ctrl-c to stop Ryu.
 If coded correctly, you should see an improvement in the video quality compared to part 1. The video may not play entirely in high quality, but you should notice an improvement from the policy in part 1.
 
 ---
-Part 4
+Tenants
 ---
 
 While the routing policy in the previous part utilizes all core switches, statically assigning core switches to route traffic for each VLAN can be problematic. Not all tenants use the same amount of bandwidth, so the load on the core switches may not be evenly distributed. As a result, one core switch may handle traffic for many tenants using large amounts of bandwidth while the other core switches are under utilized. In this part, we will observe this scenario and update our routing policy to account for different traffic demands between tenants.
