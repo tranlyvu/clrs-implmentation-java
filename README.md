@@ -1,4 +1,8 @@
-# **Emulated Software-Defined Network Application**
+# **Emulated Software-Defined Network Application** [![release][1]][2] [![HitCount][3]][4] 
+[1]: https://img.shields.io/github/release-pre/tranlyvu/emulated-sdn-application.svg
+[2]: https://github.com/tranlyvu/emulated-sdn-application/releases
+[3]: http://hits.dwyl.io/tranlyvu/emulated-sdn-application.svg
+[4]: http://hits.dwyl.io/tranlyvu/emulated-sdn-application
 
 Monitored and improve routing policy on an emulated network and application using Software-Defined Network (SDN).
 
@@ -309,6 +313,14 @@ For new feature contribution, please follow the following instruction:
 
 7. Go to your own repo and create a new Pull Request against 'dev' branch
 
+8. To sync your forked repo with my repo
+
+```
+$ git remote add upstream https://github.com/tranlyvu/emulated-sdn-application.git
+$ git checkout master
+$ git merge upstream/master
+```
+
 ---
 Contact
 ---
@@ -317,6 +329,7 @@ Feel free to contact me to discuss any issues, questions, or comments.
 *  Email: vutransingapore@gmail.com
 *  Linkedln: [@vutransingapore](https://www.linkedin.com/in/tranlyvu/)
 *  GitHub: [Tran Ly Vu](https://github.com/tranlyvu)
+*  Blog: [tranlyvu.github.io](https://tranlyvu.github.io/)
 
 ---
 License
