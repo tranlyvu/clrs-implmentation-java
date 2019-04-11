@@ -1,8 +1,12 @@
-# **Emulated Software-Defined Network Application** [![release][1]][2] [![HitCount][3]][4] 
-[1]: https://img.shields.io/github/release-pre/tranlyvu/emulated-sdn-application.svg
-[2]: https://github.com/tranlyvu/emulated-sdn-application/releases
-[3]: http://hits.dwyl.io/tranlyvu/emulated-sdn-application.svg
-[4]: http://hits.dwyl.io/tranlyvu/emulated-sdn-application
+# **Emulated Software-Defined Network Application**
+
+<p align="center">
+	<a href="https://github.com/tranlyvu/emulated-sdn-application/releases"><img src="https://img.shields.io/github/release-pre/tranlyvu/emulated-sdn-application.svg"></a>
+    <a href="https://github.com/tranlyvu/emulated-sdn-application"><img src="http://githubbadges.com/star.svg?user=tranlyvu&repo=emulated-sdn-application&style=default"></a>
+    <a href="https://github.com/tranlyvu/emulated-sdn-application/fork"><img src="http://githubbadges.com/fork.svg?user=tranlyvu&repo=emulated-sdn-application&style=default"></a>
+</p>
+
+---
 
 Monitored and improve routing policy on an emulated network and application using Software-Defined Network (SDN).
 
@@ -18,10 +22,8 @@ Table of Contents
 2. [Video Streaming](#Video-Streaming)
 3. [Traffic Monitor](#Traffic-Monitor)
 4. [Tenants](#Tenants)
-5. [Release History](#Release-History)
-6. [Contribution](#Contribution)
-7. [Contact](#Contact)
-8. [License](#License)
+5. [Contribution](#Contribution)
+6. [License](#License)
 
 ---
 Setup instructions
@@ -275,67 +277,20 @@ In terminal 2, Ctrl-c to stop Ryu.
 Expected Result: If your code is working properly, you should see the memcached response time improve when the adaptive policy is loaded. In particular, you should see a noticeable improvement in the 95th percentile compared to the default and static policies
 
 ---
-Release History
+Contribution [![Open Source Helpers](https://www.codetriage.com/tranlyvu/emulated-sdn-application/badges/users.svg)](https://www.codetriage.com/tranlyvu/emulated-sdn-application)
 ---
 
-* v1.0.0
-    * First official release
+Please follow our contribution convention at [contribution instructions](https://github.com/tranlyvu/emulated-sdn-application/blob/dev/CONTRIBUTING.md) and [code of conduct](https://github.com/tranlyvu/emulated-sdn-application/blob/dev/CODE-OF-CONDUCT.md).
 
----
-Contribution
----
+Please check out the [list of issues](https://github.com/tranlyvu/emulated-sdn-application/issues) that required helps.
 
-Contributions are welcome! For bug reports or requests please submit an [issue](https://github.com/tranlyvu/emulated-sdn-application/releases).
+### Appreciation
 
-For new feature contribution, please follow the following instruction:
+Feel free to add your name into the [list of contributors](https://github.com/tranlyvu/emulated-sdn-application/blob/dev/CONTRIBUTORS.md). You will automatically be inducted into Hall of Fame as a way to show my appreciation for your contributions.
 
-1. Fork the repo https://github.com/tranlyvu/emulated-sdn-application.git to your own github
-
-2. Clone from your own repo
-
-`$ git clone https://github.com/<your name>/emulated-sdn-application.git`
-
-3. Make sure you are at dev branch 
-
-`$ git checkout dev && git pull`
-
-4. Create your feature/bug-fix branch
-
-`$ git checkout -b <feature/bug>/<branch-name>`
-
-5. Commit your changes 
-
-`$ git commit -am 'Add some new feature'`
-
-6. Push to the branch 
-
-`$ git push`
-
-7. Go to your own repo and create a new Pull Request against 'dev' branch
-
-8. To sync your forked repo with my repo
-
-```
-$ git remote add upstream https://github.com/tranlyvu/emulated-sdn-application.git
-$ git checkout master
-$ git merge upstream/master
-```
-
----
-Hall of Fame
----
+### Hall of Fame
 
 [![](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/images/0)](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/links/0)[![](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/images/1)](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/links/1)[![](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/images/2)](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/links/2)[![](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/images/3)](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/links/3)[![](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/images/4)](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/links/4)[![](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/images/5)](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/links/5)[![](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/images/6)](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/links/6)[![](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/images/7)](https://sourcerer.io/fame/tranlyvu/tranlyvu/emulated-sdn-application/links/7)
-
----
-Contact
----
-
-Feel free to contact me to discuss any issues, questions, or comments.
-*  Email: vutransingapore@gmail.com
-*  Linkedln: [@vutransingapore](https://www.linkedin.com/in/tranlyvu/)
-*  GitHub: [Tran Ly Vu](https://github.com/tranlyvu)
-*  Blog: [tranlyvu.github.io](https://tranlyvu.github.io/)
 
 ---
 License
